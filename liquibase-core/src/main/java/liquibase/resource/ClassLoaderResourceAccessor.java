@@ -120,7 +120,7 @@ public class ClassLoaderResourceAccessor extends AbstractResourceAccessor {
                     while (entries.hasMoreElements()) {
                         JarEntry entry = entries.nextElement();
 
-                        if (entry.getName().startsWith(sanitizePath)) {
+                        if (entry.getName().startsWith(sanitizePath) || entry.getName().startsWith(path)) {
 
                             if (!recursive) {
                                 String pathAsDir = sanitizePath.endsWith("/") ? sanitizePath : sanitizePath + "/";
@@ -140,7 +140,7 @@ public class ClassLoaderResourceAccessor extends AbstractResourceAccessor {
 
                                         JarEntry nestedEntry = jarIS.getNextJarEntry();
                                         while (nestedEntry != null) {
-                                            if (nestedEntry.getName().startsWith(returnPath)) {
+                                            if (nestedEntry.getName().startsWith(returnPath) || nestedEntry.getName().startsWith(path)) {
                                                 returnSet.add(nestedEntry.getName());
                                             }
                                             nestedEntry = jarIS.getNextJarEntry();
