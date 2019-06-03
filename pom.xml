@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.liquibase</groupId>
+    <groupId>ru.i-novus.components</groupId>
     <artifactId>liquibase-parent</artifactId>
     <version>3.6.2.2.inovus</version>
     <packaging>pom</packaging>
@@ -12,8 +12,8 @@
     <url>http://www.liquibase.org</url>
 
     <organization>
-        <name>Liquibase.org</name>
-        <url>http://www.liquibase.org</url>
+        <name>I-Novus LLC</name>
+        <url>https://i-novus.ru/</url>
     </organization>
 
     <licenses>
@@ -36,6 +36,17 @@
             </roles>
             <timezone>-6</timezone>
         </developer>
+        <developer>
+            <id>keddok</id>
+            <name>Rushan Makhmutov</name>
+            <email>rmakhmutov@i-novus.ru</email>
+            <url>https://i-novus.ru/</url>
+            <organizationUrl>https://i-novus.ru/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+3</timezone>
+        </developer>
     </developers>
 
     <modules>
@@ -46,39 +57,13 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git@github.com:liquibase/liquibase.git</connection>
-        <url>scm:git:git@github.com:liquibase/liquibase.git</url>
-        <developerConnection>scm:git:git@github.com:liquibase/liquibase.git</developerConnection>
-        <tag>liquibase-parent-3.6.2.2.inovus</tag>
+        <connection>scm:git:git@github.com:i-novus-llc/liquibase.git</connection>
+        <url>scm:git:git@github.com:i-novus-llc/liquibase.git</url>
+        <developerConnection>scm:git:git@github.com:i-novus-llc/liquibase.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
-    <issueManagement>
-        <url>http://liquibase.jira.com/browse/CORE</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>CircleCI</system>
-        <url>https://circleci.com/gh/liquibase/liquibase/tree/master</url>
-    </ciManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>${internal.repository.id}</id>
-            <name>${internal.repository.id}</name>
-            <url>${internal.repository.releases}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${internal.repository.id}</id>
-            <name>${internal.repository.id}</name>
-            <url>${internal.repository.shapshots}</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
     <properties>
-        <internal.repository.releases>https://maven.i-novus.ru/libs-release-local</internal.repository.releases>
-        <internal.repository.shapshots>https://maven.i-novus.ru/libs-snapshot-local</internal.repository.shapshots>
-        <internal.repository.id>i-novus-central</internal.repository.id>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <jdk.version>1.7</jdk.version>
@@ -108,7 +93,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>2.20</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
         <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
         <org.codehaus.groovy.version>2.4.11</org.codehaus.groovy.version>
@@ -119,9 +104,6 @@
         <jacoco.version>0.7.9</jacoco.version>
         <jacoco.ut.execution.data.file>${project.basedir}/../target/coverage.exec</jacoco.ut.execution.data.file>
         <jacoco.it.execution.data.file>${project.basedir}/../target/coverage-it.exec</jacoco.it.execution.data.file>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.organization>liquibase-core</sonar.organization>
-        <sonar.jacoco.reportPaths>../target/coverage.exec,../target/coverage-it.exec</sonar.jacoco.reportPaths>
 
         <!-- JDBC driver versions -->
         <derby.version>10.12.1.1</derby.version>
@@ -133,7 +115,9 @@
         <postgresql.version>42.1.1.jre7</postgresql.version>
         <com.h2database.version>1.4.196</com.h2database.version>
         <sqlite-jdbc.version>3.19.3</sqlite-jdbc.version>
-
+        <maven.source.version>3.0.1</maven.source.version>
+        <maven.javadoc.version>3.1.0</maven.javadoc.version>
+        <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     </properties>
 
     <dependencyManagement>
@@ -442,7 +426,7 @@
 
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.4</version>
+                    <version>${maven.javadoc.version}</version>
                 </plugin>
 
                 <plugin>
@@ -600,7 +584,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.1.2</version>
+                    <version>${maven.source.version}</version>
                 </plugin>
 
                 <plugin>
@@ -775,6 +759,51 @@
                         </executions>
                     </plugin>
 
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
