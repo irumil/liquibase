@@ -52,12 +52,10 @@
 						<id>api</id>
 						<phase>prepare-package</phase>
 						<goals>
-							<goal>javadoc</goal>
+							<goal>jar</goal>
 						</goals>
 						<configuration>
-							<additionalOptions>
-								<additionalOption>-Xdoclint:none</additionalOption>
-							</additionalOptions>
+							<additionalparam>-Xdoclint:none</additionalparam>
 							<quiet>true</quiet>
 							<sourcepath>../liquibase-cdi/src/main/java</sourcepath>
 							<encoding>UTF-8</encoding>
