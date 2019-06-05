@@ -234,6 +234,10 @@
 							<goal>javadoc</goal>
 						</goals>
 						<configuration>
+							<additionalOptions>
+								<additionalOption>-Xdoclint:none</additionalOption>
+							</additionalOptions>
+							<quiet>true</quiet>
 							<sourcepath>
 								../liquibase-core/src/main/java;../liquibase-core/target/generated-sources/javacc
 							</sourcepath>

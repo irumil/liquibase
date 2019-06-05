@@ -55,6 +55,10 @@
 							<goal>javadoc</goal>
 						</goals>
 						<configuration>
+							<additionalOptions>
+								<additionalOption>-Xdoclint:none</additionalOption>
+							</additionalOptions>
+							<quiet>true</quiet>
 							<sourcepath>../liquibase-cdi/src/main/java</sourcepath>
 							<encoding>UTF-8</encoding>
 						</configuration>
