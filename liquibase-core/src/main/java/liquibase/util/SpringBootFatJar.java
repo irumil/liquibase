@@ -29,12 +29,15 @@ public class SpringBootFatJar {
     public static String getSimplePathForResources(String entryName, String path) {
         String[] components = path.split("!");
         if (components.length == 3) {
+            String entry;
             if (components[1].endsWith(".jar")) {
-                return components[2].substring(1);
+                entry = components[2];
             } else {
-                return entryName.replaceFirst(components[1], "").substring(1);
+                entry = entryName.replaceFirst(components[1], "");
             }
+            return entry.startsWith("/") ? entry.substring(1) : entry;
         }
+
         return entryName;
     }
 }
