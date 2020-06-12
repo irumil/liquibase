@@ -128,7 +128,7 @@
         <jaybird.version>3.0.1</jaybird.version>
         <postgresql.version>42.1.1.jre7</postgresql.version>
         <com.h2database.version>1.4.196</com.h2database.version>
-        <sqlite-jdbc.version>3.19.3</sqlite-jdbc.version>
+        <sqlite-jdbc.version>3.31.1</sqlite-jdbc.version>
 
     </properties>
 
@@ -551,7 +551,7 @@
                     <version>1.4</version>
                     <configuration>
                         <providerSelection>2.0</providerSelection>
-                        <source />
+                        <source/>
                     </configuration>
                     <executions>
                         <execution>
@@ -764,7 +764,7 @@
                                 <configuration>
                                     <target>
                                         <!-- Safety -->
-                                        <mkdir dir="${project.build.directory}" />
+                                        <mkdir dir="${project.build.directory}"/>
                                     </target>
                                 </configuration>
                             </execution>
