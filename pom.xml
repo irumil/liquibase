@@ -92,7 +92,7 @@
 
         <!-- Liquibase core dependencies and required jars versions -->
         <org.springframework.version>4.3.8.RELEASE</org.springframework.version>
-        <snakeyaml.version>1.18</snakeyaml.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
 
         <!-- Liquibase SDK sdk/lib-sdk required libraries versions -->
         <commons-cli.version>1.4</commons-cli.version>
@@ -126,7 +126,7 @@
         <hsqldb.version>2.3.5</hsqldb.version>
         <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
         <jaybird.version>3.0.1</jaybird.version>
-        <postgresql.version>42.1.1.jre7</postgresql.version>
+        <postgresql.version>42.2.13</postgresql.version>
         <com.h2database.version>1.4.196</com.h2database.version>
         <sqlite-jdbc.version>3.19.3</sqlite-jdbc.version>
 
@@ -551,7 +551,7 @@
                     <version>1.4</version>
                     <configuration>
                         <providerSelection>2.0</providerSelection>
-                        <source />
+                        <source/>
                     </configuration>
                     <executions>
                         <execution>
@@ -764,7 +764,7 @@
                                 <configuration>
                                     <target>
                                         <!-- Safety -->
-                                        <mkdir dir="${project.build.directory}" />
+                                        <mkdir dir="${project.build.directory}"/>
                                     </target>
                                 </configuration>
                             </execution>
