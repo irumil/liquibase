@@ -4,7 +4,7 @@
 
     <groupId>ru.i-novus.components</groupId>
     <artifactId>liquibase-parent</artifactId>
-    <version>3.6.2.3.inovus</version>
+    <version>3.6.2.4.inovus</version>
     <packaging>pom</packaging>
 
     <name>Liquibase Parent Configuration</name>
