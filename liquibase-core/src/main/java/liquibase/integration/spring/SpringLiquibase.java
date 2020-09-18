@@ -84,7 +84,6 @@ public class SpringLiquibase implements InitializingBean, BeanNameAware, Resourc
 	protected String databaseChangeLogLockTable;
 	protected String liquibaseTablespace;
 	protected boolean dropFirst;
-    protected boolean clearCheckSums;
 	protected boolean shouldRun = true;
 	protected File rollbackFile;
 
@@ -136,14 +135,6 @@ public class SpringLiquibase implements InitializingBean, BeanNameAware, Resourc
 	public void setDropFirst(boolean dropFirst) {
 		this.dropFirst = dropFirst;
 	}
-
-    public boolean isClearCheckSums() {
-        return clearCheckSums;
-    }
-
-    public void setClearCheckSums(boolean clearCheckSums) {
-        this.clearCheckSums = clearCheckSums;
-    }
 
 	public void setShouldRun(boolean shouldRun) {
 		this.shouldRun = shouldRun;
@@ -349,10 +340,6 @@ public class SpringLiquibase implements InitializingBean, BeanNameAware, Resourc
     }
 
     protected void performUpdate(Liquibase liquibase) throws LiquibaseException {
-        if (isClearCheckSums()) {
-            liquibase.clearCheckSums();
-        }
-
 		if (isTestRollbackOnUpdate()) {
 			if (tag != null) {
 				liquibase.updateTestingRollback(tag, new Contexts(getContexts()), new LabelExpression(getLabels()));
